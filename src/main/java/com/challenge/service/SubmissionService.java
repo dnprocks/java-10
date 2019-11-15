@@ -1,18 +1,21 @@
-package com.challenge.service.impl;
+package com.challenge.service;
 
 import com.challenge.entity.Submission;
 import com.challenge.repository.SubmissionRepository;
 import com.challenge.service.interfaces.SubmissionServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class SubmissionServiceImpl implements SubmissionServiceInterface {
+@AllArgsConstructor
+public class SubmissionService implements SubmissionServiceInterface {
 
-    @Autowired
+    @Autowired(required=false)
     private SubmissionRepository repository;
 
     @Override
@@ -26,6 +29,7 @@ public class SubmissionServiceImpl implements SubmissionServiceInterface {
     }
 
     @Override
+    @Transactional
     public Submission save(Submission object) {
         return repository.save(object);
     }

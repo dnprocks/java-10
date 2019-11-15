@@ -1,8 +1,9 @@
-package com.challenge.service.impl;
+package com.challenge.service;
 
 import com.challenge.entity.User;
 import com.challenge.repository.UserRepository;
 import com.challenge.service.interfaces.UserServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,28 +11,29 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserServiceInterface {
+@AllArgsConstructor
+public class UserService implements UserServiceInterface {
 
-    @Autowired
-    private UserRepository userService;
+    @Autowired(required = false)
+    private UserRepository repository;
 
     @Override
     public Optional<User> findById(Long userId) {
-        return userService.findById(userId);
+        return repository.findById(userId);
     }
 
     @Override
     public List<User> findByAccelerationName(String name) {
-        return userService.findByAccelerationName(name);
+        return repository.findByAccelerationName(name);
     }
 
     @Override
     public List<User> findByCompanyId(Long companyId) {
-        return userService.findByCompanyId(companyId);
+        return repository.findByCompanyId(companyId);
     }
 
     @Override
     public User save(User object) {
-        return userService.save(object);
+        return repository.save(object);
     }
 }

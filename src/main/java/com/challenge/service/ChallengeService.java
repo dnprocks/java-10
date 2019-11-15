@@ -1,17 +1,19 @@
-package com.challenge.service.impl;
+package com.challenge.service;
 
 import com.challenge.entity.Challenge;
 import com.challenge.repository.ChallengeRepository;
 import com.challenge.service.interfaces.ChallengeServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ChallengeServiceImpl implements ChallengeServiceInterface {
+@AllArgsConstructor
+public class ChallengeService implements ChallengeServiceInterface {
 
-    @Autowired
+    @Autowired(required=false)
     private ChallengeRepository repository;
 
     @Override

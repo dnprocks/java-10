@@ -1,8 +1,9 @@
-package com.challenge.service.impl;
+package com.challenge.service;
 
 import com.challenge.entity.Company;
 import com.challenge.repository.CompanyRepository;
 import com.challenge.service.interfaces.CompanyServiceInterface;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CompanyServiceImpl implements CompanyServiceInterface {
+@AllArgsConstructor
+public class CompanyService implements CompanyServiceInterface {
 
-    @Autowired
+    @Autowired(required=false)
     private CompanyRepository repository;
 
     @Override
@@ -22,7 +24,7 @@ public class CompanyServiceImpl implements CompanyServiceInterface {
 
     @Override
     public List<Company> findByAccelerationId(Long accelerationId) {
-        return repository.findbyAccelerationId(accelerationId);
+        return repository.findByAccelerationId(accelerationId);
     }
 
     @Override
